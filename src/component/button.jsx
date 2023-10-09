@@ -54,14 +54,14 @@ class Button extends Component {
           <button className="btnrow" onClick={this.handleclicks} value="*">x</button>
         </div>
         <div className="row3">
-          <button className="btn btn-calc" onClick={this.handleclicks} value="log2">log2</button>
+          <button className="btn btn-calc" onClick={this.handleclicks} value="log2">ln</button>
           <button className="btnnum" onClick={this.handleclicks} value="4">4</button>
           <button className="btnnum" onClick={this.handleclicks} value="5">5</button>
           <button className="btnnum" onClick={this.handleclicks} value="6">6</button>
           <button className="btnrow" onClick={this.handleclicks} value="-">-</button>
         </div>
         <div className="row4">
-          <button className="btn btn-calc" onClick={this.handleclicks} value="log10">log10</button>
+          <button className="btn btn-calc" onClick={this.handleclicks} value="log10">log</button>
           <button className="btnnum" onClick={this.handleclicks} value="1">1</button>
           <button className="btnnum" onClick={this.handleclicks} value="2">2</button>
           <button className="btnnum" onClick={this.handleclicks} value="3">3</button>

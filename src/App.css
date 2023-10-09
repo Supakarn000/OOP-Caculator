@@ -99,9 +99,8 @@
     text-decoration: none;
     display: block;
   }
-  
   .dropdown:hover .dropdown-content {display:contents;}
-
+  
   .menu{
     background: white;
     color: black;

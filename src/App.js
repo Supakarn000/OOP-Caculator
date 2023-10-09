@@ -8,11 +8,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: "0",
+      result: "0"
     }
     this.handleclicks = this.handleclicks.bind(this);
   }
-
   handleclicks = (value) => {
     switch (value) {
       case '0':
@@ -28,11 +27,8 @@ class App extends Component {
       case '.':
       case '+':
       case '-':
-      case '/':
-      case '*':
       case '(':
       case ')':
-        //case 'mod':
         if (this.state.result === "0") {
           this.setState({
             result: value
@@ -43,11 +39,39 @@ class App extends Component {
           });
         }
         break;
+      case '/':
+        if (this.state.result === "0") {
+          this.setState({
+            result: this.state.result + value
+          });
+        }
+        else {
+          this.setState({
+            result: this.state.result + value
+          });
+        }
+        break;
+      case '*':
+        if (this.state.result === "0" || this.state.result === "-0") {
+          this.setState({
+            result: this.state.result + value
+          });
+        } else {
+          this.setState({
+            result: this.state.result + value
+          });
+        }
+        break;
       case '=':
-        console.log(this.state.result);
-        this.setState({
-          result: eval(this.state.result)
-        })
+        if (this.state.result.includes("/0")) {
+          this.setState({
+            result: "Cannot divide"
+          });
+        } else {
+          this.setState({
+            result: eval(this.state.result)
+          });
+        }
         break;
       case 'c':
         this.setState({
@@ -55,8 +79,16 @@ class App extends Component {
         })
         break;
       case '+/-':
+        let Result = this.state.result;
+        if (this.state.result === 0 || this.state.result === " ") {
+          Result = "-0";
+        } else if (this.state.result === "-") {
+          Result = " ";
+        } else {
+          Result = parseInt(this.state.result, 10) * -1;
+        }
         this.setState({
-          result: parseInt(this.state.result, 10) * -1
+          result: Result
         });
         break;
       case '%':
@@ -72,25 +104,43 @@ class App extends Component {
         });
         break;
       case 'sqrt':
-        const sqnum = parseFloat(this.state.result, 10);
-        const sqrtt = Math.sqrt(sqnum);
-        this.setState({
-          result: sqrtt.toString()
-        });
-        break;
+          const sqnum = parseFloat(this.state.result, 10);
+          if (sqnum >= 0) {
+            const sqrtt = Math.sqrt(sqnum);
+            this.setState({
+              result: sqrtt.toString()
+            });
+          } else {
+            this.setState({
+              result: 'Invalid input'
+            });
+          }
+          break;
       case 'log2':
-        const numlog = parseFloat(this.state.result, 10);
-        const log2 = Math.log(numlog);
-        this.setState({
-          result: log2.toString()
-        });
+        if (this.state.result === "0" || this.state.result === "-0") {
+          this.setState({
+            result: "invaild input"
+          });
+        } else {
+          const numlog = parseFloat(this.state.result, 10);
+          const log2 = Math.log(numlog);
+          this.setState({
+            result: log2.toString()
+          });
+        }
         break;
       case 'log10':
-        const numlog10 = parseFloat(this.state.result, 10);
-        const log10 = Math.log10(numlog10);
-        this.setState({
-          result: log10.toString()
-        });
+        if (this.state.result === "0" || this.state.result === "-0") {
+          this.setState({
+            result: "invaild input"
+          });
+        } else {
+          const numlog10 = parseFloat(this.state.result, 10);
+          const log10 = Math.log10(numlog10);
+          this.setState({
+            result: log10.toString()
+          });
+        }
         break;
       case 'mod':
         this.setState({
@@ -121,24 +171,29 @@ class App extends Component {
         }
         break;
       case '10^x':
-        this.setState({
-          result: Math.pow(10, this.state.result)
-        });
+        if (this.state.result === "0") {
+          this.setState({
+            result: Math.pow(10, 0)
+          });
+        } else {
+          this.setState({
+            result: Math.pow(10, this.state.result)
+          });
+        }
         break;
       case 'exp':
         if (this.state.result === "0") {
-
         } else {
           this.setState({
-            result: Math.exp(this.state.result)
+            result: parseFloat(this.state.result).toExponential()
           });
         }
         break;
       case 'd':
-        alert("กดทำไม");
+        alert("ปุ่มไม่พร้อม");
+
+      default:
     }
-
-
   }
 
   render() {
