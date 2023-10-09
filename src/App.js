@@ -192,6 +192,18 @@ class App extends Component {
       case 'd':
         alert("ปุ่มไม่พร้อม");
 
+      case 'PI':
+          this.setState({
+            result:  (22/7)
+            });
+        break;
+      case 'e':
+          this.setState({
+            result: this.state.result = Math.E
+            });
+
+        break;
+
       default:
     }
   }

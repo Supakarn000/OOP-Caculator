@@ -80,6 +80,8 @@ class Button extends Component {
         <button className="btn btn-calc" onClick={this.handleclicks} value="n!">n!</button>
         <button className="btn btn-calc" onClick={this.handleclicks} value="(">(</button>
         <button className="btn btn-calc" onClick={this.handleclicks} value=")">)</button>
+        <button className="btn btn-calc" onClick={this.handleclicks} value="PI">PI</button>
+        <button className="btn btn-calc" onClick={this.handleclicks} value="e">e</button>
         </div>
       </div>
     )
